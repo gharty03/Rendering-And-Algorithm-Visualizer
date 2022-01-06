@@ -46,5 +46,12 @@ public class HelloController {
         stage.show();
     }
 
+    @FXML
+    protected void SortingAlgorithmWindow(ActionEvent event) throws IOException
+    {
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SortingAlgorithmVisualizer.fxml"));
+
+    }
+
 
 }
