@@ -18,8 +18,8 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("Menu");
         stage.setScene(scene);
-        stage.setWidth(1080);
-        stage.setHeight(1080);
+        stage.setWidth(300);
+        stage.setHeight(400);
         stage.show();
     }
 
