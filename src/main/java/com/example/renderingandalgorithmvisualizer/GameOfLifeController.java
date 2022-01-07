@@ -68,7 +68,6 @@ public class GameOfLifeController
     protected void onPauseButtonPressed(ActionEvent event)
     {
         pauseButton.setDisable(true);
-        stopButton.setDisable(true);
         resumeButton.setDisable(false);
         gt.stop();
     }
@@ -79,6 +78,7 @@ public class GameOfLifeController
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0,0,1000,1000);
         pauseButton.setDisable(true);
+        resumeButton.setDisable(true);
         stopButton.setDisable(true);
         startButton.setDisable(false);
         gt.stop();
