@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class GameOfLifeController
     private Scene scene;
     private Parent root;
     private FXMLLoader fxmlLoader;
+    private Canvas canvas;
 
     @FXML
     protected void openMenuWindow(ActionEvent event) throws IOException {
