@@ -20,7 +20,7 @@
       </font>
    </Text>
     <Button onAction="#openRayTracingWindow" text="Ray Tracing - 3D Renderer" />
-   <Button mnemonicParsing="false" text="Sorting Algorithm Visualizer" />
+   <Button mnemonicParsing="false" onAction="#SortingAlgorithmWindow" text="Sorting Algorithm Visualizer" />
    <Button mnemonicParsing="false" text="Button" />
    <Button mnemonicParsing="false" text="Button" />
    <Button mnemonicParsing="false" text="Button" />
