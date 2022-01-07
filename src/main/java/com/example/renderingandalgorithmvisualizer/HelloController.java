@@ -13,36 +13,25 @@ import java.io.IOException;
 
 public class HelloController {
     @FXML
-    private Label welcomeText;
+    private Label TitleText;
     private Stage stage;
     private Scene scene;
     private Parent root;
     private FXMLLoader fxmlLoader;
 
     @FXML
-    protected void openMenuWindow(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuWindow.fxml"));
-        root = fxmlLoader.load();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setWidth(300);
-        stage.setHeight(400);
-        stage.centerOnScreen();
-        stage.show();
-    }
-
-    @FXML
-    protected void openRayTracingWindow(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("RayTracingWindow.fxml"));
+    protected void openGameOfLifeWindow(ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("GameOfLifeWindow.fxml"));
         root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setWidth(1024);
         stage.setHeight(768);
+        stage.setTitle("RAAV - Conway's Game of Life");
+        stage.setResizable(false);
         stage.centerOnScreen();
-        stage.setFullScreen(true);
+        //stage.setFullScreen(true);
         stage.show();
     }
 
