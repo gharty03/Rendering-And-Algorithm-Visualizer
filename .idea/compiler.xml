@@ -9,5 +9,8 @@
         <module name="Rendering-And-Algorithm-Visualizer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Rendering-And-Algorithm-Visualizer" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
