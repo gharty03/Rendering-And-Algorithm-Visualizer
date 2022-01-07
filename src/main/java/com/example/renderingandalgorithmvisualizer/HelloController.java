@@ -29,6 +29,7 @@ public class HelloController {
         stage.setWidth(1024);
         stage.setHeight(768);
         stage.setTitle("RAAV - Conway's Game of Life");
+        stage.setResizable(false);
         stage.centerOnScreen();
         //stage.setFullScreen(true);
         stage.show();

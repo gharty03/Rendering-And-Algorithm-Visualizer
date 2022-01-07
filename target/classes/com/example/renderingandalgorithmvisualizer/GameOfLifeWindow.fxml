@@ -4,6 +4,8 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -11,11 +13,14 @@
    <children>
       <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
         <buttons>
-            <Button mnemonicParsing="false" text="Start" />
-            <Button mnemonicParsing="false" text="Pause" />
-            <Button mnemonicParsing="false" text="Step" />
-            <Button mnemonicParsing="false" text="Reset" />
-            <Button mnemonicParsing="false" onAction="#openMenuWindow" text="Back to Menu">
+            <Spinner disable="true" />
+            <Label text="Iterations/Second:" />
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#onStartButtonPressed" text="Start" />
+            <Button fx:id="resumeButton" disable="true" mnemonicParsing="false" onAction="#onResumeButtonPressed" text="Resume" />
+            <Button fx:id="pauseButton" disable="true" mnemonicParsing="false" onAction="#onPauseButtonPressed" text="Pause" />
+            <Button fx:id="stepButton" disable="true" mnemonicParsing="false" onAction="#onStepButtonPressed" text="Step" />
+            <Button fx:id="stopButton" disable="true" mnemonicParsing="false" onAction="#onStopButtonPressed" text="Stop" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#openMenuWindow" text="Back to Menu">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></Button>
