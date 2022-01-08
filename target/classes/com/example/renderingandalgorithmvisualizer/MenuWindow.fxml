@@ -20,7 +20,6 @@
       </font>
    </Text>
    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rendering and Algorithm Visualizer" />
-
    <Button mnemonicParsing="false" onAction="#SortingAlgorithmWindow" text="Sorting Algorithm Visualizer" />
    <Button onAction="#openGameOfLifeWindow" text="Conway's Game of Life" />
    <Button mnemonicParsing="false" text="Button" />
