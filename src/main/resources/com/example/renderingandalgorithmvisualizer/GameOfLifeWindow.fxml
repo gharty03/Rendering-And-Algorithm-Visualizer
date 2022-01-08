@@ -6,7 +6,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.GameOfLifeController">
@@ -18,7 +18,6 @@
             <Button fx:id="startButton" mnemonicParsing="false" onAction="#onStartButtonPressed" text="Start" />
             <Button fx:id="resumeButton" disable="true" mnemonicParsing="false" onAction="#onResumeButtonPressed" text="Resume" />
             <Button fx:id="pauseButton" disable="true" mnemonicParsing="false" onAction="#onPauseButtonPressed" text="Pause" />
-            <Button fx:id="stepButton" disable="true" mnemonicParsing="false" onAction="#onStepButtonPressed" text="Step" />
             <Button fx:id="stopButton" disable="true" mnemonicParsing="false" onAction="#onStopButtonPressed" text="Stop" />
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#openMenuWindow" text="Back to Menu">
                <opaqueInsets>
@@ -32,10 +31,10 @@
             <Insets left="10.0" />
          </VBox.margin>
       </ButtonBar>
-      <AnchorPane prefHeight="720.0" prefWidth="1024.0">
+      <Pane prefHeight="750.0" prefWidth="1000.0">
          <children>
-            <Canvas fx:id="canvas" height="700.0" layoutX="12.0" width="1000.0" />
+            <Canvas fx:id="canvas" height="650.0" layoutX="37.0" layoutY="16.0" onMouseClicked="#onCanvasClicked" width="925.0" />
          </children>
-      </AnchorPane>
+      </Pane>
    </children>
 </VBox>
