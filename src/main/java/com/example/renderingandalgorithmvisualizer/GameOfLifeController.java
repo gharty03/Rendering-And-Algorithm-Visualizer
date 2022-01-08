@@ -14,6 +14,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -143,6 +144,21 @@ public class GameOfLifeController
         MouseButton clicked = event.getButton();
         int cellPosX = (int)event.getX() / 25;
         int cellPosY = (int)event.getY() / 25;
+        if (clicked.name().equals("PRIMARY"))
+            gameArray[cellPosX][cellPosY] = 1;
+        else if (clicked.name().equals("SECONDARY"))
+            gameArray[cellPosX][cellPosY] = 0;
+        paintSquaresOnCanvas();
+    }
+
+    @FXML
+    protected void onCanvasMouseDragged(MouseEvent event)
+    {
+        MouseButton clicked = event.getButton();
+        int cellPosX = (int)event.getX() / 25;
+        int cellPosY = (int)event.getY() / 25;
+        if (cellPosX < 0 || cellPosX >= numCols || cellPosY < 0 || cellPosY >= numRows)
+            return;
         if (clicked.name().equals("PRIMARY"))
             gameArray[cellPosX][cellPosY] = 1;
         else if (clicked.name().equals("SECONDARY"))

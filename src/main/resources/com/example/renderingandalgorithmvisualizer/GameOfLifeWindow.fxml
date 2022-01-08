@@ -33,7 +33,7 @@
       </ButtonBar>
       <Pane prefHeight="750.0" prefWidth="1000.0">
          <children>
-            <Canvas fx:id="canvas" height="650.0" layoutX="37.0" layoutY="16.0" onMouseClicked="#onCanvasClicked" width="925.0" />
+            <Canvas fx:id="canvas" height="650.0" layoutX="37.0" layoutY="16.0" onMouseClicked="#onCanvasClicked" onMouseDragged="#onCanvasMouseDragged" width="925.0" />
          </children>
       </Pane>
    </children>
