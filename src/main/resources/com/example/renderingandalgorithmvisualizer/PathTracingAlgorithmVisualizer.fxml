@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AlgorithmWindow" prefHeight="625.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.HelloController">
+<AnchorPane fx:id="AlgorithmWindow" prefHeight="625.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.PathTracingAlgorithmController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
    <children>
       <ToolBar layoutY="-6.0" prefHeight="40.0" prefWidth="820.0">
         <items>
-          <Button fx:id="QuitApp" mnemonicParsing="false" text="Quit To Desktop">
+          <Button fx:id="QuitApp" mnemonicParsing="false" onAction="#quitToDesktop" text="Quit To Desktop">
                <font>
                   <Font name="Calibri" size="12.0" />
                </font>

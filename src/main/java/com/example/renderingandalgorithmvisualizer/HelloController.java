@@ -39,7 +39,7 @@ public class HelloController {
     @FXML
     protected void SortingAlgorithmWindow(ActionEvent event) throws IOException
     {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SortingAlgorithmVisualizer.fxml"));
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PathTracingAlgorithmVisualizer.fxml"));
         root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -50,5 +50,6 @@ public class HelloController {
         stage.show();
     }
 
-
 }
+
+
