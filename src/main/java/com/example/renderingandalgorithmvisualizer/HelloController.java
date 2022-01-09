@@ -37,6 +37,23 @@ public class HelloController {
     }
 
     @FXML
+    protected void openFloodFillWindow(ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("FloodFillWindow.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setWidth(1024);
+        stage.setHeight(768);
+        stage.setTitle("RAAV - Flood Fill Algorithm");
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        //stage.setFullScreen(true);
+        stage.show();
+        ((FloodFillController)fxmlLoader.getController()).initFloodFillWindow();
+    }
+
+    @FXML
     protected void SortingAlgorithmWindow(ActionEvent event) throws IOException
     {
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PathTracingAlgorithmVisualizer.fxml"));
