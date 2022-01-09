@@ -33,6 +33,7 @@ public class HelloController {
         stage.centerOnScreen();
         //stage.setFullScreen(true);
         stage.show();
+        ((GameOfLifeController)fxmlLoader.getController()).initGameOfLifeWindow();
     }
 
     @FXML
