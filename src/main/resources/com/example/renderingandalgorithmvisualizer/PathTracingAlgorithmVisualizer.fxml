@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AlgorithmWindow" prefHeight="625.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.PathTracingAlgorithmController">
+<AnchorPane fx:id="AlgorithmWindow" prefHeight="625.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.PathTracingAlgorithmController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
    <children>
        <ToolBar layoutY="-6.0" prefHeight="40.0" prefWidth="820.0">
-           <Button fx:id="QuitApp" mnemonicParsing="false" onAction="#quitToDesktop" text="Quit To Desktop">
+           <Button fx:id="QuitApp" mnemonicParsing="false" onAction="#QuitToDesktop" text="Quit To Desktop">
                 <font>
                     <Font name="Calibri" size="12.0"/>
                 </font>
            </Button>
-           <Button fx:id="ReturnToMenu" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#openMenuWindow"
+           <Button fx:id="ReturnToMenu" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#OpenMenuWindow"
                    text="Return To Menu">
               <font>
                   <Font name="Calibri" size="12.0"/>

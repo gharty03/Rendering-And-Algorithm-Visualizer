@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.renderingandalgorithmvisualizer/com.example.renderingandalgorithmvisualizer.HelloApplication
+                                com.example.renderingandalgorithmvisualizer/com.example.renderingandalgorithmvisualizer.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.FloodFillController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.FloodFillController">
     <children>
         <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
             <buttons>
@@ -19,7 +19,7 @@
             <ColorPicker fx:id="floodFillColorPicker"/>
             <Label text="Flood Fill Color:" />
             <Button mnemonicParsing="false" text="Reset Canvas" />
-                <Button fx:id="backButton" mnemonicParsing="false" onAction="#openMenuWindow" text="Back to Menu">
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets></Button>

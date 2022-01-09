@@ -1,5 +1,6 @@
-package com.example.renderingandalgorithmvisualizer;
+package com.example.renderingandalgorithmvisualizer.MenuButtonControllers;
 
+import com.example.renderingandalgorithmvisualizer.Main;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,14 +15,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class GameOfLifeController
+public class GameOfLifeController implements MenuControllerInterface
 {
     @FXML
     private Stage stage;
@@ -41,7 +41,7 @@ public class GameOfLifeController
     private int numCols = 37, numRows = 26;
     private int[][] gameArray;
 
-    protected void initGameOfLifeWindow()
+    public void initGameOfLifeWindow()
     {
         //todo
         speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -196,9 +196,9 @@ public class GameOfLifeController
     }
 
     @FXML
-    protected void openMenuWindow(ActionEvent event) throws IOException
+    public void OpenMenuWindow(ActionEvent event) throws IOException
     {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuWindow.fxml"));
+        fxmlLoader = new FXMLLoader(Main.class.getResource("MenuWindow.fxml"));
         root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

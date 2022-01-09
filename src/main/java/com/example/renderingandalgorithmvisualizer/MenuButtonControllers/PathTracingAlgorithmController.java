@@ -1,7 +1,7 @@
-package com.example.renderingandalgorithmvisualizer;
+package com.example.renderingandalgorithmvisualizer.MenuButtonControllers;
 
+import com.example.renderingandalgorithmvisualizer.Main;
 import javafx.animation.AnimationTimer;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PathTracingAlgorithmController {
+public class PathTracingAlgorithmController implements MenuControllerInterface {
 
     @FXML
     private AnchorPane AlgorithmWindow;
@@ -29,8 +29,15 @@ public class PathTracingAlgorithmController {
     private Canvas canvas;
 
 
-    public void openMenuWindow(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuWindow.fxml"));
+
+    @FXML
+    public void QuitToDesktop(ActionEvent event){
+        javafx.application.Platform.exit();
+    }
+
+
+    public void OpenMenuWindow(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuWindow.fxml"));
         root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -41,10 +48,6 @@ public class PathTracingAlgorithmController {
         stage.centerOnScreen();
         stage.show();
         if (gt != null) {gt.stop();}
-    }
 
-    @FXML
-    public void quitToDesktop(ActionEvent event){
-        javafx.application.Platform.exit();
     }
 }

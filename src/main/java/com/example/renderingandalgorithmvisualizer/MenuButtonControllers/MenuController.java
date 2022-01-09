@@ -1,5 +1,6 @@
-package com.example.renderingandalgorithmvisualizer;
+package com.example.renderingandalgorithmvisualizer.MenuButtonControllers;
 
+import com.example.renderingandalgorithmvisualizer.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloController {
+public class MenuController {
     @FXML
     private Label TitleText;
     private Stage stage;
@@ -21,7 +22,7 @@ public class HelloController {
 
     @FXML
     protected void openGameOfLifeWindow(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("GameOfLifeWindow.fxml"));
+        fxmlLoader = new FXMLLoader(Main.class.getResource("GameOfLifeWindow.fxml"));
         root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -38,7 +39,7 @@ public class HelloController {
 
     @FXML
     protected void openFloodFillWindow(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("FloodFillWindow.fxml"));
+        fxmlLoader = new FXMLLoader(Main.class.getResource("FloodFillWindow.fxml"));
         root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -56,7 +57,7 @@ public class HelloController {
     @FXML
     protected void SortingAlgorithmWindow(ActionEvent event) throws IOException
     {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PathTracingAlgorithmVisualizer.fxml"));
+        fxmlLoader = new FXMLLoader(Main.class.getResource("PathTracingAlgorithmVisualizer.fxml"));
         root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -66,7 +67,6 @@ public class HelloController {
         stage.centerOnScreen();
         stage.show();
     }
-
 }
 
 

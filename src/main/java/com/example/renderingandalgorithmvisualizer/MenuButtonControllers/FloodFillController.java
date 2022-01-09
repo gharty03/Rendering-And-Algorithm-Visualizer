@@ -1,6 +1,6 @@
-package com.example.renderingandalgorithmvisualizer;
+package com.example.renderingandalgorithmvisualizer.MenuButtonControllers;
 
-import javafx.animation.AnimationTimer;
+import com.example.renderingandalgorithmvisualizer.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class FloodFillController
+public class FloodFillController implements MenuControllerInterface
 {
     @FXML
     private Stage stage;
@@ -34,7 +34,7 @@ public class FloodFillController
     int brushSize, numCols, numRows;
     Color[][] colorArray;
 
-    protected void initFloodFillWindow()
+    public void initFloodFillWindow()
     {
         // todo
         brushSize = 5;
@@ -96,10 +96,10 @@ public class FloodFillController
         paintSquaresOnCanvas();*/
     }
 
-    @FXML
+   /* @FXML
     protected void openMenuWindow(ActionEvent event) throws IOException
     {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuWindow.fxml"));
+        fxmlLoader = new FXMLLoader(Main.class.getResource("MenuWindow.fxml"));
         root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -109,5 +109,24 @@ public class FloodFillController
         stage.setTitle("RAAV - Rendering and Algorithm Visualizer");
         stage.centerOnScreen();
         stage.show();
+    } */
+
+    @Override
+    public void OpenMenuWindow(ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(Main.class.getResource("MenuWindow.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setWidth(450);
+        stage.setHeight(400);
+        stage.setTitle("RAAV - Rendering and Algorithm Visualizer");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    @FXML
+    public void QuitToDesktop(ActionEvent event) {
+
     }
 }
