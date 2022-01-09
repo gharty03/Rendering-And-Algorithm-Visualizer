@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AlgorithmWindow" prefHeight="625.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.PathTracingAlgorithmController">
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+   <children>
+      <ToolBar layoutY="-6.0" prefHeight="40.0" prefWidth="820.0">
+        <items>
+          <Button fx:id="QuitApp" mnemonicParsing="false" onAction="#quitToDesktop" text="Quit To Desktop">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="ReturnToMenu" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#openMenuWindow" text="Return To Menu">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Button>
+        </items>
+      </ToolBar>
+   </children>
+</AnchorPane>
