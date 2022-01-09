@@ -64,7 +64,6 @@ public class FloodFillController implements MenuControllerInterface
     @FXML
     protected void onCanvasClicked(MouseEvent event)
     {
-        System.out.println("onCanvasClicked");
         MouseButton clicked = event.getButton();
         int cellPosX = (int)event.getX() / brushSize;
         int cellPosY = (int)event.getY() / brushSize;
@@ -75,41 +74,38 @@ public class FloodFillController implements MenuControllerInterface
             gc.setFill(paintbrushColorPicker.getValue());
             gc.fillRect((cellPosX * brushSize),(cellPosY * brushSize), brushSize, brushSize);
         }
-
-
-
+        else if (clicked.name().equals("SECONDARY"))
+        {
+            // todo
+        }
     }
 
     @FXML
     protected void onCanvasMouseDragged(MouseEvent event)
     {
-        System.out.println("onCanvasMouseDragged");
-        /*MouseButton clicked = event.getButton();
-        int cellPosX = (int)event.getX() / 25;
-        int cellPosY = (int)event.getY() / 25;
+        MouseButton clicked = event.getButton();
+        int cellPosX = (int)event.getX() / brushSize;
+        int cellPosY = (int)event.getY() / brushSize;
         if (cellPosX < 0 || cellPosX >= numCols || cellPosY < 0 || cellPosY >= numRows)
             return;
         if (clicked.name().equals("PRIMARY"))
-            gameArray[cellPosX][cellPosY] = 1;
+        {
+            colorArray[cellPosX][cellPosY] = paintbrushColorPicker.getValue();
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setFill(paintbrushColorPicker.getValue());
+            gc.fillRect((cellPosX * brushSize),(cellPosY * brushSize), brushSize, brushSize);
+        }
         else if (clicked.name().equals("SECONDARY"))
-            gameArray[cellPosX][cellPosY] = 0;
-        paintSquaresOnCanvas();*/
+        {
+            // todo
+        }
     }
 
-   /* @FXML
-    protected void openMenuWindow(ActionEvent event) throws IOException
+    @FXML
+    protected void onResetCanvasButtonClicked(ActionEvent event)
     {
-        fxmlLoader = new FXMLLoader(Main.class.getResource("MenuWindow.fxml"));
-        root = fxmlLoader.load();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setWidth(450);
-        stage.setHeight(400);
-        stage.setTitle("RAAV - Rendering and Algorithm Visualizer");
-        stage.centerOnScreen();
-        stage.show();
-    } */
+        initCanvas();
+    }
 
     @Override
     public void OpenMenuWindow(ActionEvent event) throws IOException {
