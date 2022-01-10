@@ -2,8 +2,6 @@ package com.example.renderingandalgorithmvisualizer.MenuButtonControllers;
 
 import com.example.renderingandalgorithmvisualizer.Main;
 import javafx.animation.AnimationTimer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,37 +23,28 @@ public class GameOfLifeController implements MenuControllerInterface
 {
     @FXML
     private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private FXMLLoader fxmlLoader;
     @FXML
     private Canvas canvas;
     @FXML
-    private Button startButton, pauseButton, stepButton, stopButton, backButton, resumeButton, seedButton;
+    private Button startButton, pauseButton, stopButton, resumeButton;
     @FXML
     private Slider speedSlider;
     private AnimationTimer gt;
     private long timerSpeed;
-    private long timerBaseSpeed = 5000000L;
-    // game vars
-    private int numCols = 37, numRows = 26;
+    private final long timerBaseSpeed = 5000000L;
+    private final int numCols = 37, numRows = 26;
     private int[][] gameArray;
 
     public void initGameOfLifeWindow()
     {
-        //todo
-        speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number oldNum, Number newNum) {
-                timerSpeed = (int)Math.pow(2, (10 - newNum.intValue())) * timerBaseSpeed;
-            }
-        });
+        speedSlider.valueProperty().addListener((observableValue, oldNum, newNum) -> timerSpeed = (int)Math.pow(2, (10 - newNum.intValue())) * timerBaseSpeed);
         initGame();
     }
 
     protected void initGame()
     {
         gameArray = new int[numCols][numRows];
+        timerSpeed = (int)Math.pow(2, (10 - (int)speedSlider.getValue())) * timerBaseSpeed;
         initGameCanvas();
     }
 
@@ -129,7 +118,7 @@ public class GameOfLifeController implements MenuControllerInterface
     }
 
     @FXML
-    protected void onStartButtonPressed(ActionEvent event)
+    protected void onStartButtonPressed()
     {
         pauseButton.setDisable(false);
         stopButton.setDisable(false);
@@ -167,7 +156,7 @@ public class GameOfLifeController implements MenuControllerInterface
     }
 
     @FXML
-    protected void onResumeButtonPressed(ActionEvent event)
+    protected void onResumeButtonPressed()
     {
         pauseButton.setDisable(false);
         stopButton.setDisable(false);
@@ -177,7 +166,7 @@ public class GameOfLifeController implements MenuControllerInterface
     }
 
     @FXML
-    protected void onPauseButtonPressed(ActionEvent event)
+    protected void onPauseButtonPressed()
     {
         pauseButton.setDisable(true);
         resumeButton.setDisable(false);
@@ -185,7 +174,7 @@ public class GameOfLifeController implements MenuControllerInterface
     }
 
     @FXML
-    protected void onStopButtonPressed(ActionEvent event)
+    protected void onStopButtonPressed()
     {
         initGame();
         pauseButton.setDisable(true);
@@ -198,10 +187,10 @@ public class GameOfLifeController implements MenuControllerInterface
     @FXML
     public void OpenMenuWindow(ActionEvent event) throws IOException
     {
-        fxmlLoader = new FXMLLoader(Main.class.getResource("MenuWindow.fxml"));
-        root = fxmlLoader.load();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuWindow.fxml"));
+        Parent root = fxmlLoader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setWidth(450);
         stage.setHeight(400);
@@ -213,7 +202,6 @@ public class GameOfLifeController implements MenuControllerInterface
 
     private class GOLTimer extends AnimationTimer
     {
-        private double curX,curY;
         private long lastUpdatedTime;
 
         @Override
