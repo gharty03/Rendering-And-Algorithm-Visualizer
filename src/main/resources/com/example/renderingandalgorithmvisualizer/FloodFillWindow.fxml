@@ -5,6 +5,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
@@ -14,12 +15,13 @@
     <children>
         <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
             <buttons>
+            <ColorPicker fx:id="floodFillColorPicker" />
+            <Label text="Flood Fill Color:" />
             <ColorPicker fx:id="paintbrushColorPicker" />
             <Label text="Paintbrush Color:" />
-            <ColorPicker fx:id="floodFillColorPicker"/>
-            <Label text="Flood Fill Color:" />
-            <Button mnemonicParsing="false" text="Reset Canvas" />
-                <Button fx:id="backButton" mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
+            <CheckBox fx:id="slowedCheckBox" mnemonicParsing="false" onAction="#onSlowedCheckBoxChanged" text="Slowed:" />
+            <Button fx:id="resetCanvasButton" mnemonicParsing="false" onAction="#onResetCanvasButtonClicked" text="Reset Canvas" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets></Button>
