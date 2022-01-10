@@ -17,6 +17,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 public class FloodFillController implements MenuControllerInterface
 {
@@ -36,7 +39,6 @@ public class FloodFillController implements MenuControllerInterface
 
     public void initFloodFillWindow()
     {
-        // todo
         brushSize = 5;
         numCols = (int)canvas.getWidth() / brushSize;
         numRows = (int)canvas.getHeight() / brushSize;
@@ -45,7 +47,6 @@ public class FloodFillController implements MenuControllerInterface
 
     protected void initCanvas()
     {
-        // todo
         colorArray = new Color[numCols][numRows];
         for (int a = 0; a < numCols; a++)
         {
@@ -58,26 +59,56 @@ public class FloodFillController implements MenuControllerInterface
         gc.clearRect(0,0,1000,1000);
         gc.setFill(Color.web("#ffffff"));
         gc.fillRect(0,0,1000,1000);
-
     }
 
     @FXML
-    protected void onCanvasClicked(MouseEvent event)
-    {
+    protected void onCanvasClicked(MouseEvent event) throws InterruptedException {
         MouseButton clicked = event.getButton();
         int cellPosX = (int)event.getX() / brushSize;
         int cellPosY = (int)event.getY() / brushSize;
         if (clicked.name().equals("PRIMARY"))
         {
             colorArray[cellPosX][cellPosY] = paintbrushColorPicker.getValue();
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setFill(paintbrushColorPicker.getValue());
-            gc.fillRect((cellPosX * brushSize),(cellPosY * brushSize), brushSize, brushSize);
+            paintSquareOnCanvas(cellPosX, cellPosY, paintbrushColorPicker.getValue());
         }
         else if (clicked.name().equals("SECONDARY"))
         {
-            // todo
+            floodFill(cellPosX, cellPosY, colorArray[cellPosX][cellPosY], floodFillColorPicker.getValue());
         }
+    }
+
+    private void floodFill(int xCol, int yRow, Color targetColor, Color replacementColor) throws InterruptedException {
+        if (targetColor.equals(replacementColor))
+            return;
+
+        LinkedList<Coord> queue = new LinkedList<Coord>();
+        queue.add(new Coord(xCol,yRow));
+
+        while (!queue.isEmpty())
+        {
+            Coord n = queue.removeFirst();
+            if (colorArray[n.x][n.y].equals(targetColor))
+            {
+                colorArray[n.x][n.y] = replacementColor;
+                paintSquareOnCanvas(n.x, n.y, replacementColor);
+
+                if (n.x > 0)
+                    queue.add(new Coord(n.x - 1, n.y));
+                if (n.x < numCols - 1)
+                    queue.add(new Coord(n.x + 1, n.y));
+                if (n.y > 0)
+                    queue.add(new Coord(n.x, n.y - 1));
+                if (n.y < numRows - 1)
+                    queue.add(new Coord(n.x, n.y + 1));
+            }
+        }
+    }
+
+    private void paintSquareOnCanvas(int cellPosX, int cellPosY, Color color)
+    {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(color);
+        gc.fillRect((cellPosX * brushSize),(cellPosY * brushSize), brushSize, brushSize);
     }
 
     @FXML
@@ -91,13 +122,7 @@ public class FloodFillController implements MenuControllerInterface
         if (clicked.name().equals("PRIMARY"))
         {
             colorArray[cellPosX][cellPosY] = paintbrushColorPicker.getValue();
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setFill(paintbrushColorPicker.getValue());
-            gc.fillRect((cellPosX * brushSize),(cellPosY * brushSize), brushSize, brushSize);
-        }
-        else if (clicked.name().equals("SECONDARY"))
-        {
-            // todo
+            paintSquareOnCanvas(cellPosX, cellPosY, paintbrushColorPicker.getValue());
         }
     }
 
@@ -122,7 +147,19 @@ public class FloodFillController implements MenuControllerInterface
     }
 
     @FXML
-    public void QuitToDesktop(ActionEvent event) {
+    public void QuitToDesktop(ActionEvent event)
+    {
+        // todo
+    }
 
+    private class Coord
+    {
+        public int x, y;
+
+        Coord(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
     }
 }

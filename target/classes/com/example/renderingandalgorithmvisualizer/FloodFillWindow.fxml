@@ -14,11 +14,11 @@
     <children>
         <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
             <buttons>
-            <ColorPicker fx:id="floodFillColorPicker"/>
+            <ColorPicker fx:id="floodFillColorPicker" />
             <Label text="Flood Fill Color:" />
             <ColorPicker fx:id="paintbrushColorPicker" />
             <Label text="Paintbrush Color:" />
-            <Button fx:id="resetCanvasButton" mnemonicParsing="false" text="Reset Canvas" />
+            <Button fx:id="resetCanvasButton" mnemonicParsing="false" onAction="#onResetCanvasButtonClicked" text="Reset Canvas" />
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
                     <opaqueInsets>
                         <Insets />
