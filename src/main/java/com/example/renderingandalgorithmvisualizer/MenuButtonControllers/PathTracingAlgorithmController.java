@@ -35,18 +35,10 @@ public class PathTracingAlgorithmController implements MenuControllerInterface {
         javafx.application.Platform.exit();
     }
 
-
+    @FXML
+    @Override
     public void OpenMenuWindow(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuWindow.fxml"));
-        root = fxmlLoader.load();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setWidth(450);
-        stage.setHeight(400);
-        stage.setTitle("RAAV - Rendering and Algorithm Visualizer");
-        stage.centerOnScreen();
-        stage.show();
+        MenuControllerInterface.super.OpenMenuWindow(event);
         if (gt != null) {gt.stop();}
 
     }

@@ -185,18 +185,10 @@ public class GameOfLifeController implements MenuControllerInterface
     }
 
     @FXML
+    @Override
     public void OpenMenuWindow(ActionEvent event) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuWindow.fxml"));
-        Parent root = fxmlLoader.load();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setWidth(450);
-        stage.setHeight(400);
-        stage.setTitle("RAAV - Rendering and Algorithm Visualizer");
-        stage.centerOnScreen();
-        stage.show();
+        MenuControllerInterface.super.OpenMenuWindow(event);
         if (gt != null) {gt.stop();}
     }
 
