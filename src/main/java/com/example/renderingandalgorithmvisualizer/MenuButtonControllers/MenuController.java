@@ -67,6 +67,25 @@ public class MenuController {
         stage.centerOnScreen();
         stage.show();
     }
+
+    @FXML
+    protected void openBresenhamsLineAlgorithmWindow(ActionEvent event) throws IOException
+    {
+        fxmlLoader = new FXMLLoader(Main.class.getResource("BresenhamsLineAlgorithmWindow.fxml"));
+        root = fxmlLoader.load();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setWidth(1024);
+        stage.setHeight(768);
+        stage.setTitle("RAAV - Bresenham's Line Algorithm");
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        //stage.setFullScreen(true);
+        stage.show();
+        ((BresenhamsLineAlgorithmController)fxmlLoader.getController()).initBresenhamsLineAlgorithmWindow();
+    }
+
 }
 
 

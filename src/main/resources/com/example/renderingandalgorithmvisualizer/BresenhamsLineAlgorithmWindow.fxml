@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.BresenhamsLineAlgorithmController">
+<children>
+    <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
+        <buttons>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets></Button>
+        </buttons>
+        <opaqueInsets>
+            <Insets />
+        </opaqueInsets>
+        <VBox.margin>
+            <Insets left="10.0" />
+        </VBox.margin>
+    </ButtonBar>
+    <Pane prefHeight="750.0" prefWidth="1000.0">
+        <Canvas fx:id="canvas" height="650.0" layoutX="37.0" layoutY="16.0" onMouseClicked="#onCanvasClicked" width="925.0">
+            <cursor>
+                <Cursor fx:constant="CROSSHAIR" />
+            </cursor></Canvas>
+    </Pane>
+</children>
+</VBox>
