@@ -1,5 +1,6 @@
 package com.example.renderingandalgorithmvisualizer.MenuButtonControllers;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -11,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 public class BresenhamsLineAlgorithmController implements MenuControllerInterface
 {
@@ -18,14 +20,15 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
     Canvas canvas;
     @FXML
     Label labelPointA, labelPointB;
-    private int gridSize, numCols, numRows, aX, bX, aY, bY;
-    private boolean slowed, pointALocked, pointBLocked;
+    private int gridSize, aX, bX, aY, bY;
+    private boolean slowed, pointALocked, pointBLocked, printReversed;
+    private LinkedList<int[]> pointQueue;
+    BLATimer blaTimer;
 
     public void initBresenhamsLineAlgorithmWindow()
     {
         gridSize = 5;
-        numCols = (int)canvas.getWidth() / gridSize;
-        numRows = (int)canvas.getHeight() / gridSize;
+        pointQueue = new LinkedList<>();
         initCanvas();
     }
 
@@ -53,6 +56,22 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
             else
                 plotLineHigh(x0, y0, x1, y1);
         }
+
+        if (slowed)
+            drawLineSlowed();
+    }
+
+    private void drawLineSlowed()
+    {
+        if (pointQueue.peek() != null)
+            printReversed = (pointQueue.peek()[0] == aX && pointQueue.peek()[1] == aY);
+        else
+            throw new RuntimeException("pointQueue is empty during call to drawLineSlowed()");
+
+        if (blaTimer != null)
+            blaTimer.stop();
+        blaTimer = new BLATimer();
+        blaTimer.start();
     }
 
     private void plotLineLow(int x0, int y0, int x1, int y1)
@@ -73,7 +92,11 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
 
         for (int x = x0; x <= x1; x++)
         {
-            drawPointOnCanvas(x, y);
+            if (!slowed)
+                drawPointOnCanvas(x, y);
+            else
+                pointQueue.add(new int[]{x, y});
+
             if (D > 0)
             {
                 y = y + yi;
@@ -102,7 +125,11 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
 
         for (int y = y0; y <= y1; y++)
         {
-            drawPointOnCanvas(x, y);
+            if (!slowed)
+                drawPointOnCanvas(x, y);
+            else
+                pointQueue.add(new int[]{x, y});
+
             if (D > 0)
             {
                 x = x + xi;
@@ -158,10 +185,13 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
 
     private void clearPoints()
     {
+        pointQueue = new LinkedList<>();
         labelPointA.setText("Point A: (?, ?)");
         labelPointB.setText("Point B: (?, ?)");
         pointALocked = false;
         pointBLocked = false;
+        if (blaTimer != null)
+            blaTimer.stop();
     }
 
     @FXML
@@ -181,12 +211,16 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
     {
         clearPoints();
         initCanvas();
+        if (blaTimer != null)
+            blaTimer.stop();
     }
 
     @FXML
     @Override
     public void OpenMenuWindow(ActionEvent event) throws IOException
     {
+        if (blaTimer != null)
+            blaTimer.stop();
         MenuControllerInterface.super.OpenMenuWindow(event);
     }
 
@@ -194,6 +228,27 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
     @Override
     public void QuitToDesktop(ActionEvent event)
     {
+        if (blaTimer != null)
+            blaTimer.stop();
         MenuControllerInterface.super.QuitToDesktop(event);
+    }
+
+    private class BLATimer extends AnimationTimer
+    {
+        @Override
+        public void handle(long currentTime)
+        {
+            if (pointQueue.size() > 0)
+            {
+                int[] temp;
+                if (printReversed)
+                    temp = pointQueue.removeFirst();
+                else
+                    temp = pointQueue.removeLast();
+                drawPointOnCanvas(temp[0], temp[1]);
+            }
+            else
+                blaTimer.stop();
+        }
     }
 }

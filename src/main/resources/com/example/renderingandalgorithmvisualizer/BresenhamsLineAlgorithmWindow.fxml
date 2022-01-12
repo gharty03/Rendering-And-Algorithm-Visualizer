@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.BresenhamsLineAlgorithmController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="868.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.BresenhamsLineAlgorithmController">
 <children>
     <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
         <buttons>
             <Label fx:id="labelPointB" alignment="CENTER" prefWidth="120.0" text="Point B: (?, ?)" />
             <Label fx:id="labelPointA" alignment="CENTER" prefWidth="120.0" text="Point A: (?, ?)" />
-            <CheckBox fx:id="slowedCheckBox" disable="true" mnemonicParsing="false" onAction="#onSlowedCheckBoxChanged" text="Slowed:" />
+            <CheckBox fx:id="slowedCheckBox" mnemonicParsing="false" onAction="#onSlowedCheckBoxChanged" text="Slowed:" />
             <Button mnemonicParsing="false" onAction="#onResetCanvasButtonClicked" text="Reset Canvas" />
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
                 <opaqueInsets>
@@ -36,5 +36,13 @@
                 <Cursor fx:constant="CROSSHAIR" />
             </cursor></Canvas>
     </Pane>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+            <Button mnemonicParsing="false" onAction="#QuitToDesktop" text="Quit" />
+        </buttons>
+         <VBox.margin>
+            <Insets bottom="10.0" right="10.0" />
+         </VBox.margin>
+      </ButtonBar>
 </children>
 </VBox>
