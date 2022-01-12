@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.BresenhamsLineAlgorithmController">
 <children>
     <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
         <buttons>
+            <Label fx:id="labelPointB" alignment="CENTER" prefWidth="120.0" text="Point B: (?, ?)" />
+            <Label fx:id="labelPointA" alignment="CENTER" prefWidth="120.0" text="Point A: (?, ?)" />
+            <CheckBox fx:id="slowedCheckBox" disable="true" mnemonicParsing="false" onAction="#onSlowedCheckBoxChanged" text="Slowed:" />
+            <Button mnemonicParsing="false" onAction="#onResetCanvasButtonClicked" text="Reset Canvas" />
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
                 <opaqueInsets>
                     <Insets />
