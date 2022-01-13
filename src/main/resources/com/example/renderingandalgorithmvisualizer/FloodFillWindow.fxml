@@ -11,33 +11,46 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.FloodFillController">
-    <children>
-        <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
-            <buttons>
-            <ColorPicker fx:id="floodFillColorPicker" />
-            <Label text="Flood Fill Color:" />
-            <ColorPicker fx:id="paintbrushColorPicker" />
-            <Label text="Paintbrush Color:" />
-            <CheckBox fx:id="slowedCheckBox" mnemonicParsing="false" onAction="#onSlowedCheckBoxChanged" text="Slowed:" />
-            <Button fx:id="resetCanvasButton" mnemonicParsing="false" onAction="#onResetCanvasButtonClicked" text="Reset Canvas" />
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets></Button>
-            </buttons>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="868.0"
+      prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.FloodFillController">
+    <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
+        <buttons>
+        <ColorPicker fx:id="floodFillColorPicker"/>
+        <Label text="Flood Fill Color:"/>
+        <ColorPicker fx:id="paintbrushColorPicker"/>
+        <Label text="Paintbrush Color:"/>
+        <CheckBox mnemonicParsing="false" onAction="#onSlowedCheckBoxChanged"
+                  text="Slowed:"/>
+        <Button mnemonicParsing="false" onAction="#onResetCanvasButtonClicked"
+                text="Reset Canvas"/>
+        <Button mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
             <opaqueInsets>
-                <Insets />
+                <Insets/>
             </opaqueInsets>
-            <VBox.margin>
-                <Insets left="10.0" />
-            </VBox.margin>
-        </ButtonBar>
-        <Pane prefHeight="750.0" prefWidth="1000.0">
-            <Canvas fx:id="canvas" height="650.0" layoutX="37.0" layoutY="16.0" onMouseClicked="#onCanvasClicked" onMouseDragged="#onCanvasMouseDragged" width="925.0">
-            <cursor>
-               <Cursor fx:constant="CROSSHAIR" />
-            </cursor></Canvas>
-        </Pane>
-    </children>
+        </Button>
+        </buttons>
+        <opaqueInsets>
+            <Insets/>
+        </opaqueInsets>
+        <VBox.margin>
+            <Insets left="10.0"/>
+        </VBox.margin>
+    </ButtonBar>
+    <Pane prefHeight="750.0" prefWidth="1000.0">
+        <Canvas fx:id="canvas" height="650.0" layoutX="37.0" layoutY="16.0" onMouseClicked="#onCanvasClicked"
+                onMouseDragged="#onCanvasMouseDragged" width="925.0">
+        <cursor>
+            <Cursor fx:constant="CROSSHAIR"/>
+        </cursor>
+        </Canvas>
+    </Pane>
+    <ButtonBar prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+            <Button mnemonicParsing="false" onAction="#QuitToDesktop" text="Quit"/>
+        </buttons>
+        <VBox.margin>
+            <Insets bottom="10.0" right="10.0"/>
+        </VBox.margin>
+    </ButtonBar>
 </VBox>

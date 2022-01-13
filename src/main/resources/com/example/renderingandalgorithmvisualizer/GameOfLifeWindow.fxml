@@ -9,32 +9,45 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.GameOfLifeController">
-   <children>
-      <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
-        <buttons>
-            <Slider fx:id="speedSlider" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" min="1.0" minorTickCount="9" nodeOrientation="LEFT_TO_RIGHT" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="3.0" />
-            <Label text="Speed:" />
-            <Button fx:id="startButton" mnemonicParsing="false" onAction="#onStartButtonPressed" text="Start" />
-            <Button fx:id="resumeButton" disable="true" mnemonicParsing="false" onAction="#onResumeButtonPressed" text="Resume" />
-            <Button fx:id="pauseButton" disable="true" mnemonicParsing="false" onAction="#onPauseButtonPressed" text="Pause" />
-            <Button fx:id="stopButton" disable="true" mnemonicParsing="false" onAction="#onStopButtonPressed" text="Stop" />
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets></Button>
-        </buttons>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <VBox.margin>
-            <Insets left="10.0" />
-         </VBox.margin>
-      </ButtonBar>
-      <Pane prefHeight="750.0" prefWidth="1000.0">
-         <children>
-            <Canvas fx:id="canvas" height="650.0" layoutX="37.0" layoutY="16.0" onMouseClicked="#onCanvasClicked" onMouseDragged="#onCanvasMouseDragged" width="925.0" />
-         </children>
-      </Pane>
-   </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
+      prefWidth="1034.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.renderingandalgorithmvisualizer.MenuButtonControllers.GameOfLifeController">
+    <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="1024.0">
+      <buttons>
+          <Slider fx:id="speedSlider" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" min="1.0"
+                  minorTickCount="9" nodeOrientation="LEFT_TO_RIGHT" showTickLabels="true" showTickMarks="true"
+                  snapToTicks="true" value="3.0"/>
+          <Label text="Speed:"/>
+          <Button fx:id="startButton" mnemonicParsing="false" onAction="#onStartButtonPressed" text="Start"/>
+          <Button fx:id="resumeButton" disable="true" mnemonicParsing="false" onAction="#onResumeButtonPressed"
+                  text="Resume"/>
+          <Button fx:id="pauseButton" disable="true" mnemonicParsing="false" onAction="#onPauseButtonPressed"
+                  text="Pause"/>
+          <Button fx:id="stopButton" disable="true" mnemonicParsing="false" onAction="#onStopButtonPressed"
+                  text="Stop"/>
+          <Button mnemonicParsing="false" onAction="#OpenMenuWindow" text="Back to Menu">
+              <opaqueInsets>
+                  <Insets/>
+              </opaqueInsets>
+          </Button>
+      </buttons>
+        <opaqueInsets>
+          <Insets/>
+        </opaqueInsets>
+        <VBox.margin>
+          <Insets left="10.0"/>
+        </VBox.margin>
+    </ButtonBar>
+    <Pane prefHeight="750.0" prefWidth="1000.0">
+        <Canvas fx:id="canvas" height="650.0" layoutX="37.0" layoutY="16.0" onMouseClicked="#onCanvasClicked"
+                onMouseDragged="#onCanvasMouseDragged" width="925.0"/>
+    </Pane>
+    <ButtonBar prefHeight="40.0" prefWidth="200.0">
+      <buttons>
+          <Button mnemonicParsing="false" onAction="#QuitToDesktop" text="Quit"/>
+      </buttons>
+        <VBox.margin>
+          <Insets bottom="10.0" right="10.0"/>
+        </VBox.margin>
+    </ButtonBar>
 </VBox>

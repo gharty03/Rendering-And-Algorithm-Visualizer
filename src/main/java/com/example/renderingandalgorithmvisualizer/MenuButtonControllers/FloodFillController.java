@@ -1,13 +1,8 @@
 package com.example.renderingandalgorithmvisualizer.MenuButtonControllers;
 
-import com.example.renderingandalgorithmvisualizer.Main;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.CheckBox;
@@ -15,15 +10,12 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.LinkedList;
 
 public class FloodFillController implements MenuControllerInterface
 {
-    @FXML
-    private Stage stage;
     @FXML
     private Canvas canvas;
     @FXML
@@ -203,9 +195,12 @@ public class FloodFillController implements MenuControllerInterface
     }
 
     @FXML
+    @Override
     public void QuitToDesktop(ActionEvent event)
     {
-        // TODO: Implement quit to desktop button.
+        if (ffTimer != null)
+            ffTimer.stop();
+        MenuControllerInterface.super.QuitToDesktop(event);
     }
 
     private class FFTimer extends AnimationTimer

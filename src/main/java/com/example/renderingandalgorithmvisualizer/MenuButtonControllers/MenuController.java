@@ -28,11 +28,10 @@ public class MenuController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setWidth(1024);
-        stage.setHeight(768);
+        stage.setHeight(785);
         stage.setTitle("RAAV - Conway's Game of Life");
         stage.setResizable(false);
         stage.centerOnScreen();
-        //stage.setFullScreen(true);
         stage.show();
         ((GameOfLifeController)fxmlLoader.getController()).initGameOfLifeWindow();
     }
@@ -49,7 +48,6 @@ public class MenuController {
         stage.setTitle("RAAV - Flood Fill Algorithm");
         stage.setResizable(false);
         stage.centerOnScreen();
-        //stage.setFullScreen(true);
         stage.show();
         ((FloodFillController)fxmlLoader.getController()).initFloodFillWindow();
     }
@@ -81,7 +79,6 @@ public class MenuController {
         stage.setTitle("RAAV - Bresenham's Line Algorithm");
         stage.setResizable(false);
         stage.centerOnScreen();
-        //stage.setFullScreen(true);
         stage.show();
         ((BresenhamsLineAlgorithmController)fxmlLoader.getController()).initBresenhamsLineAlgorithmWindow();
     }
