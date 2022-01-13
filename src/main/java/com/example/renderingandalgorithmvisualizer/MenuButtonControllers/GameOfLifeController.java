@@ -1,13 +1,8 @@
 package com.example.renderingandalgorithmvisualizer.MenuButtonControllers;
 
-import com.example.renderingandalgorithmvisualizer.Main;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -15,14 +10,11 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class GameOfLifeController implements MenuControllerInterface
 {
-    @FXML
-    private Stage stage;
     @FXML
     private Canvas canvas;
     @FXML
@@ -190,6 +182,15 @@ public class GameOfLifeController implements MenuControllerInterface
     {
         MenuControllerInterface.super.OpenMenuWindow(event);
         if (gt != null) {gt.stop();}
+    }
+
+    @FXML
+    @Override
+    public void QuitToDesktop(ActionEvent event)
+    {
+        if (gt != null)
+            gt.stop();
+        MenuControllerInterface.super.QuitToDesktop(event);
     }
 
     private class GOLTimer extends AnimationTimer

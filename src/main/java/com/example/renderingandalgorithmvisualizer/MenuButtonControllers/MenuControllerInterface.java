@@ -30,8 +30,9 @@ public interface MenuControllerInterface
     }
 
     @FXML
-    public default void QuitToDesktop(ActionEvent event) {
-
+    public default void QuitToDesktop(ActionEvent event)
+    {
+        javafx.application.Platform.exit();
     }
 
 
