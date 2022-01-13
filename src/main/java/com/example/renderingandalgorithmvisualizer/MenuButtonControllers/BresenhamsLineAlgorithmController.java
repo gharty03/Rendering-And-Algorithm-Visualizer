@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -20,7 +21,10 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
     Canvas canvas;
     @FXML
     Label labelPointA, labelPointB;
-    private int gridSize, aX, bX, aY, bY;
+    @FXML
+    ChoiceBox<String> gridSizeChoiceBox;
+    private int gridSize;
+    private int aX, aY;
     private boolean slowed, pointALocked, pointBLocked, printReversed;
     private LinkedList<int[]> pointQueue;
     BLATimer blaTimer;
@@ -29,6 +33,17 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
     {
         gridSize = 5;
         pointQueue = new LinkedList<>();
+        gridSizeChoiceBox.getItems().addAll("Small", "Medium", "Large");
+        gridSizeChoiceBox.setValue("Medium");
+        gridSizeChoiceBox.valueProperty().addListener((observableValue, oldVal, newVal) -> {
+            clearPoints();
+            switch (newVal) {
+                case "Small" -> gridSize = 1;
+                case "Medium" -> gridSize = 5;
+                case "Large" -> gridSize = 25;
+            }
+
+        });
         initCanvas();
     }
 
@@ -164,10 +179,8 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
             if (pointALocked)
             {
                 pointBLocked = true;
-                bX = cellPosX;
-                bY = cellPosY;
-                labelPointB.setText(String.format("Point B: (%d, %d)", bX, bY));
-                plotLine(aX, aY, bX, bY);
+                labelPointB.setText(String.format("Point B: (%d, %d)", cellPosX, cellPosY));
+                plotLine(aX, aY, cellPosX, cellPosY);
             }
             else
             {
@@ -192,12 +205,6 @@ public class BresenhamsLineAlgorithmController implements MenuControllerInterfac
         pointBLocked = false;
         if (blaTimer != null)
             blaTimer.stop();
-    }
-
-    @FXML
-    protected void onCanvasMouseDragged(MouseEvent event)
-    {
-        // todo
     }
 
     @FXML
